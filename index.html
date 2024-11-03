@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison of Followers and Following</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial; }
+        body {
+            background-color: #000; 
+            color: #fff; 
+            padding: 20px; 
+            position: relative; 
+            overflow: hidden; 
+            overflow-y: auto; /* Add this line to make the entire page scrollable */
+            height: 100vh; /* Full height */
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Permanent Marker'; 
+            margin-bottom: 20px;
+        }
+        .file-upload-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between the file inputs */
+            margin: 20px 0; /* Space above and below the container */
+        }
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+        label {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block; /* Allows padding */
+            transition: background-color 0.3s ease;
+        }
+        label:hover {
+            background-color: #0056b3; /* Change on hover */
+        }
+        .custom-file-text {
+            margin-top: 10px; /* Space below the label */
+            color: #fff; /* Custom text color */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px auto;
+            display: block;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .user-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .user-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .user-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .username-link {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+        .username-link:hover {
+            color: #2d4a8a;
+        }
+        #vanta {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure the animation is in the background */
+        }
+        .search-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+            text-align: center;
+        }
+        .search-box {
+            padding: 10px;
+            width: 35%;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: transparent;
+            color: #fff;
+            outline: none;
+        }
+        .search-box::placeholder {
+            color: white;
+            opacity: 0.7;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+        }
+        .footer a {
+            color: #9dbafa; /* Link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #fff; /* Change link color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div id="vanta"></div> <!-- Background animation container -->
+    
+    <h1>Users Who Don't Follow Back</h1>
+    
+    <div class="file-upload-container">
+        <div class="file-upload">
+            <label for="followersFile">Choose followers_1.json</label>
+            <input type="file" id="followersFile" accept=".json" onchange="updateFileText('followersFile', 'followersText')">
+            <span id="followersText" class="custom-file-text">No file chosen</span>
+        </div>
+        <div class="file-upload">
+            <label for="followingFile">Choose following.json</label>
+            <input type="file" id="followingFile" accept=".json" onchange="updateFileText('followingFile', 'followingText')">
+            <span id="followingText" class="custom-file-text">No file chosen</span>
+        </div>
+    </div>
+    
+    <button onclick="compareFiles()">Compare</button>
+    
+    <div class="search-container" id="searchContainer">
+        <input type="text" id="searchInput" onkeyup="filterUsers()" class="search-box" placeholder="&#x1F50E;&#xFE0E; Search...">
+    </div>
+    
+    <div class="user-container" id="resultList"></div>
+
+    <div class="footer">
+        Developed by: <a href="https://github.com/erfannjz" target="_blank">erfannjz</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script>
+        function updateFileText(inputId, textId) {
+            const input = document.getElementById(inputId);
+            const text = document.getElementById(textId);
+            if (input.files.length > 0) {
+                text.textContent = input.files[0].name; // Show the selected file name
+            } else {
+                text.textContent = "No file chosen"; // Reset to default if no file is chosen
+            }
+        }
+
+        function readFile(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    resolve(JSON.parse(reader.result));
+                };
+                reader.onerror = reject;
+                reader.readAsText(file);
+            });
+        }
+
+        async function compareFiles() {
+            const followingFile = document.getElementById('followingFile').files[0];
+            const followersFile = document.getElementById('followersFile').files[0];
+
+            if (!followingFile || !followersFile) {
+                alert("Please select both files.");
+                return;
+            }
+
+            try {
+                const followingData = await readFile(followingFile);
+                const followersData = await readFile(followersFile);
+
+                const followingHrefs = new Set();
+                followingData.relationships_following.forEach(item => {
+                    item.string_list_data.forEach(str => {
+                        followingHrefs.add(str.href);
+                    });
+                });
+
+                const followersHrefs = new Set();
+                followersData.forEach(item => {
+                    item.string_list_data.forEach(str => {
+                        followersHrefs.add(str.href);
+                    });
+                });
+
+                const uniqueHrefs = [...followingHrefs].filter(href => !followersHrefs.has(href));
+                displayResults(uniqueHrefs);
+
+                // Show search container after comparison
+                document.getElementById('searchContainer').style.display = 'block';
+            } catch (error) {
+                alert("Error reading files!");
+            }
+        }
+
+        function displayResults(hrefs) {
+            const resultList = document.getElementById('resultList');
+            resultList.innerHTML = ''; // Clear previous results
+            hrefs.forEach(href => {
+                const username = href.split('/').slice(-1)[0];
+                const profileLink = href; // Assuming the href is the profile link
+                const card = document.createElement('div');
+                card.className = 'user-card';
+                card.innerHTML = `<a href="${profileLink}" target="_blank" class="username-link">${username}</a>`;
+                resultList.appendChild(card);
+            });
+
+            if (hrefs.length === 0) {
+                resultList.innerHTML = '<div class="user-card">No unique usernames found.</div>';
+            }
+        }
+
+        function filterUsers() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+            const cards = document.querySelectorAll(".user-card");
+
+            cards.forEach(card => {
+                const link = card.querySelector(".username-link");
+                const textValue = link.textContent || link.innerText;
+                card.style.display = textValue.toLowerCase().includes(filter) ? "" : "none";
+            });
+        }
+
+        VANTA.WAVES({
+            el: "#vanta",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            waveHeight: 20,
+            waveSpeed: 1.5,
+            zoom: 0.85,
+            color: 0x005577,
+            color2: 0x0099bb,
+            shape: 1
+        });
+    </script>
+</body>
+</html>
