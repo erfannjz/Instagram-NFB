@@ -1,4 +1,4 @@
-# Instagram Non-Follow Back Tool
+# Instagram Non-Follow Back (NFB) Tool
 
 ## Description
 This tool helps you identify Instagram users who do not follow you back. You can upload your followers and followings JSON files to see who isn't following you back.
