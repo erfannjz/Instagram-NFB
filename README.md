@@ -23,7 +23,7 @@ For a visual guide on how to use this tool, check out the YouTube tutorial: [Wat
    - You can leave the **Media Quality** option as **Medium**.
    - Finally, click on **Create Files**.
 
-After submitting your request, Instagram will send you an email with a link to download your data. You may need to go back to the main section and click the download button twice to retrieve your files.
+After submitting your request, Instagram will send you an email with a link to download your data. You may need to go back to the data download section and click the download button.
 
 ## Features:
 - Upload two JSON files:
