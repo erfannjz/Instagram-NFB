@@ -1,51 +1,42 @@
 # Instagram Non-Follow Back (NFB) Tool
 
-## Description
-This tool helps you identify Instagram users who do not follow you back. You can upload your followers and followings JSON files to see who isn't following you back.
+This web application helps Instagram users identify accounts that do not follow them back. It extracts information from two JSON files: one containing your followers and the other containing the accounts you are following. By comparing these two lists, the tool provides a straightforward way to see who you may want to unfollow.
 
-## Watch Tutorial
-- For a detailed walkthrough, watch the tutorial on YouTube: [YouTube Tutorial Link](https://www.youtube.com/@erfannjz)
+## Video Tutorial
+For a visual guide on how to use this tool, check out the YouTube tutorial: [Watch Tutorial(Persian)](https://www.youtube.com/@erfannjz).
 
-## How to Use
-
-1. **Download Your Instagram Data:**
-   - Open Instagram and go to your profile.
-   - Tap on the **Settings** icon.
-   - Select **Security**, then scroll down to **Download Data**.
-   - Enter your email address and choose the data format (choose **JSON** format for easier use).
+## How to Download Your Instagram Data:
+1. **Open Instagram App or Website**: Log in to your Instagram account.
+2. **Access Settings**:
+   - On the app: Go to your profile, tap on the three horizontal lines (menu) in the top right corner, then select **Settings**.
+   - On the website: Click on your profile picture in the top right corner and select **Settings**.
+3. **Privacy and Security**:
+   - In the Settings menu, select **Privacy and Security**.
+4. **Download Your Data**:
+   - Scroll down to the **Data Download** section and click on **Request Download**.
+   - Click on **Some of your information** in the **How much information do you want?** section.
    - Select **Followers and Followings** and then click **Next**.
    - Click on **Download to Device**.
-   - Set the **Date Range** to **Custom** and select **Today**.
-   - Enter your email address and choose the data format (choose **JSON** format for easier use).
-   - Instagram will send you a link via email to download your data. You will need to click on the link in your email and return to the main section to select **Download** again.
+   - Set the **Date Range** to **Custom** and select today’s date.
+   - Enter your email address in the **Notify** section.
+   - Choose the data format as **JSON**.
+   - You can leave the **Media Quality** option as **Medium**.
+   - Finally, click on **Create Files**.
 
-2. **Upload Files:**
-   - Choose your `followers_1.json` and `following.json` files using the file upload buttons.
-   - Click the **Compare** button to see the users who don't follow you back.
-   - Use the search bar to filter the results.
+After submitting your request, Instagram will send you an email with a link to download your data. You may need to go back to the main section and click the download button twice to retrieve your files.
 
-## Persian Version
+## Features:
+- Upload two JSON files:
+  - `followers_1.json`: Your list of followers.
+  - `following.json`: The list of accounts you are following.
+- Compare the two lists to identify users who do not follow you back.
+- Search functionality to filter results easily.
+- A visually appealing interface with background animation.
 
-## توضیحات
-این ابزار به شما کمک می‌کند تا کاربرانی را که در اینستاگرام شما را فالو نکرده‌اند، شناسایی کنید. شما می‌توانید فایل‌های JSON فالوئرها و فالوینگ‌های خود را بارگذاری کنید تا ببینید چه کسی شما را فالو نکرده است.
+## How to Use:
+1. Visit the [live demo](https://erfannjz.github.io/Instagram-NFB/).
+2. Click on the "Choose followers_1.json" button to upload your followers file.
+3. Click on the "Choose following.json" button to upload your following file.
+4. Click the "Compare" button to see the users who do not follow you back.
+5. Use the search box to filter the displayed results.
 
-**تماشای آموزش:**
-   - برای مشاهده آموزش کامل، ویدیو را در یوتیوب تماشا کنید: [لینک آموزش یوتیوب](https://www.youtube.com/@erfannjz)
-   - 
-## نحوه استفاده
-
-1. **دانلود داده‌های اینستاگرام خود:**
-   - اپلیکیشن اینستاگرام را باز کرده و به پروفایل خود بروید.
-   - روی آیکون **تنظیمات** ضربه بزنید.
-   - گزینه **امنیت** را انتخاب کنید و سپس به سمت پایین بروید و **دانلود داده‌ها** را انتخاب کنید.
-   - آدرس ایمیل خود را وارد کنید و فرمت داده‌ها را انتخاب کنید (فرمت **JSON** را برای استفاده راحت‌تر انتخاب کنید).
-   - روی **Followers and Followings** کلیک کرده و سپس **Next** را بزنید.
-   - روی **Download to Device** کلیک کنید.
-   - **Date Range** را روی **Custom** تنظیم کرده و **Today** را انتخاب کنید.
-   - آدرس ایمیل خود را وارد کرده و فرمت داده‌ها را انتخاب کنید (فرمت **JSON** را برای استفاده راحت‌تر انتخاب کنید).
-   - اینستاگرام یک لینک به ایمیل شما ارسال می‌کند تا داده‌های خود را دانلود کنید. شما باید روی لینک در ایمیل خود کلیک کرده و دوباره به بخش اصلی برگردید تا **Download** را انتخاب کنید.
-
-2. **بارگذاری فایل‌ها:**
-   - فایل‌های `followers_1.json` و `following.json` خود را با استفاده از دکمه‌های بارگذاری فایل انتخاب کنید.
-   - روی دکمه **Compare** کلیک کنید تا کاربران را که شما را فالو نکرده‌اند، ببینید.
-   - از نوار جستجو برای فیلتر کردن نتایج استفاده کنید.
