@@ -17,7 +17,7 @@ For a visual guide on how to use this tool, check out the YouTube tutorial: [Wat
    - Click on **Some of your information** in the **How much information do you want?** section.
    - Select **Followers and Followings** and then click **Next**.
    - Click on **Download to Device**.
-   - Set the **Date Range** to **Custom** and select today’s date.
+   - Set the **Date Range** to **AllTime** and select today’s date.
    - Enter your email address in the **Notify** section.
    - Choose the data format as **JSON**.
    - You can leave the **Media Quality** option as **Medium**.
