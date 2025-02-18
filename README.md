@@ -3,7 +3,7 @@
 This web application helps Instagram users identify accounts that do not follow them back. It extracts information from two JSON files: one containing your followers and the other containing the accounts you are following. By comparing these two lists, the tool provides a straightforward way to see who you may want to unfollow.
 
 ## Video Tutorial
-For a visual guide on how to use this tool, check out the YouTube tutorial: [Watch Tutorial(Persian)](https://www.youtube.com/@erfannjz).
+For a visual guide on how to use this tool, check out the YouTube tutorial: [Watch Tutorial(Persian)](https://youtu.be/fu7z8dnQQKI?si=b38Q6r2E_mevtqWT).
 
 ## How to Download Your Instagram Data:
 1. **Open Instagram App or Website**: Log in to your Instagram account.
